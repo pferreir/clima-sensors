@@ -1,0 +1,42 @@
+[package]
+authors = ["Pedro Ferreira <pedro@dete.st>"]
+edition = "2018"
+readme = "README.md"
+name = "clima-sensors"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "^0.6"
+embedded-hal = "0.2.4"
+panic-itm = "^0.4"
+dht11 = "^0.3"
+mlx9061x = "^0.1"
+ssd1306 = "^0.5"
+embedded-graphics = "^0.6"
+shared-bus = "^0.2"
+nb = "^1.0"
+ufmt = "^0.1"
+heapless = { version = "^0.5", features = ["ufmt-impl"] }
+profont = "^0.4"
+cmim = "^0.2"
+tinybmp = { version = "0.2.3", features = ["graphics"] }
+lazy_static = { version = "^1.4", features = ["spin_no_std"] }
+panic-halt = "^0.2"
+
+[dependencies.cortex-m-rt]
+version = "0.6.13"
+features = ["device"]
+
+[dependencies.stm32f4xx-hal]
+version = "0.8.3"
+features = ["stm32f401", "rt"]
+
+[[bin]]
+name = "clima-sensors"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations

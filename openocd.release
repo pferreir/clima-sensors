@@ -1,0 +1,6 @@
+init
+
+halt
+wait_halt
+
+flash probe 0
